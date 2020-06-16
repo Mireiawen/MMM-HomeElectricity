@@ -1,0 +1,11 @@
+{
+  "name": "mmm-homeelectricity",
+  "version": "1.0.0",
+  "description": "",
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "jquery": "^3.5.1",
+    "sprintf-js": "^1.1.2"
+  }
+}
