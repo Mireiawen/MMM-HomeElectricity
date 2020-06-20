@@ -55,9 +55,6 @@ Module.register('MMM-HomeElectricity',
     // Define the DateTime from luxon
     var DateTime = luxon.DateTime;
 
-    // Define the sprintf
-    //var sprintf = require('sprintf-js').sprintf;
-
     // Get the times
     start = DateTime.local().minus({ months: this.config.range}).startOf('month').toISODate();
     end = DateTime.local().minus({months: this.config.range}).endOf('month').toISODate();
