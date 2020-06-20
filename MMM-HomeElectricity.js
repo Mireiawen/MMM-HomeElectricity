@@ -19,6 +19,7 @@ Module.register('MMM-HomeElectricity',
     measurement: "electricity",
     spot: "spot",
     consumed: "consumed",
+    range: 1,
     margin: 0.0,
     monthlyFee: 0.0,
     textPre: '',
@@ -58,8 +59,8 @@ Module.register('MMM-HomeElectricity',
     //var sprintf = require('sprintf-js').sprintf;
 
     // Get the times
-    start = DateTime.local().minus({ months: 1}).startOf('month').toISODate();
-    end = DateTime.local().minus({months: 1}).endOf('month').toISODate();
+    start = DateTime.local().minus({ months: this.config.range}).startOf('month').toISODate();
+    end = DateTime.local().minus({months: this.config.range}).endOf('month').toISODate();
 
     // Build the URL for InfluxDB query
     query = sprintf('SELECT (%s * %s + %f)/100 AS cost FROM %s WHERE Time > \'%s\' AND Time < \'%s\'',
