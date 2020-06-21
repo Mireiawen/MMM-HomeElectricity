@@ -41,21 +41,22 @@ modules: [
         consumed: "magic_use",
         margin: 0.10,
         monthlyFee: 2.00,
-        textPre: 'Last month ',
+        template: 'Last month: {{= it.consumed }} magic spent, worth of {{= it.cost }} magic stones',
         textPost: ' magic units'
       }
     }
 ]
 ```
 ### Configuration options
-| Option            | Type   | Description                                  | Default value              |
-| ------------------|--------|----------------------------------------------|----------------------------|
-| `url`             | string | The InfluxDB API URL                         | `'http://localhost:8086/'` |
-| `database`        | string | The InfluxDB database to query               | `'magicmirror'`            |
-| `measurement`     | string | The InfluxDB measurement to read from        | `'electricity`'            |
-| `spot`            | string | The SPOT price, or similar cost of use field | `'spot'`                   |
-| `consumed`        | string | The field for the consumed units             | `'consumed'`               |
-| `margin`          | float  | Margin to add to the cost of use             | `0.0`                      |
-| `monthlyFee`      | float  | The monthly fee to add to the total sum      | `0.0`                      |
-| `textPre`         | string | Text to show before the sum                  | `''`                       |
-| `textPost`        | string | Text to show after the sum                   | `''`                       |
+| Option        | Type   | Description                                    | Default value              |
+| --------------|--------|------------------------------------------------|----------------------------|
+| `name`        | string | Unique name for the module, if multiple in use | `'default'`                |
+| `url`         | string | The InfluxDB API URL                           | `'http://localhost:8086/'` |
+| `database`    | string | The InfluxDB database to query                 | `'magicmirror'`            |
+| `measurement` | string | The InfluxDB measurement to read from          | `'electricity`'            |
+| `spot`        | string | The SPOT price, or similar cost of use field   | `'spot'`                   |
+| `consumed`    | string | The field for the consumed units               | `'consumed'`               |
+| `range`       | int    | The month to look back, 0 means this month, 1 previous and so on | `1`      |
+| `margin`      | float  | Margin to add to the cost of use               | `0.0`                      |
+| `monthlyFee`  | float  | The monthly fee to add to the total sum        | `0.0`                      |
+| `template`    | string | Text template for cost and consumption texts   | `'Consumed: {{= it.consumed }} magic, {{= it.cost }} money'` |
